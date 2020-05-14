@@ -1,10 +1,13 @@
 import { serve } from "https://deno.land/std/http/server.ts";
-import { readFileStr } from "https://deno.land/std/fs/read_file_str.ts"
+import App from "./App.jsx"
+import { data, methods } from "./DB.ts"
 
-
-const str = await readFileStr("./App.ejs")
-const template = `var App=\`${str}\`;export default App`
 const port = 3000
+const body = `
+const template=\`${App}\`;
+const data=${JSON.stringify(data)};
+const methods=${JSON.stringify(methods)};
+export default {template, data,methods}`
 const server = serve({ port })
 const header = [
   ['Access-Control-Allow-Origin', '*'],
@@ -12,5 +15,5 @@ const header = [
 ]
 console.log(`server run at http://localhost:${port}`)
 for await (const req of server) {
-  req.respond({ body: template, headers:new Headers(header) })
+  req.respond({ body, headers: new Headers(header) })
 }
