@@ -1,6 +1,6 @@
 import { serve } from "https://deno.land/std/http/server.ts";
-import App from "./App.jsx"
-import { data, methods } from "./DB.ts"
+import App from "./src/App.jsx"
+import { data, methods } from "./src/data/DB.ts"
 
 const port = 3000
 const body = `
