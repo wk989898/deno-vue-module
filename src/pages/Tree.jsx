@@ -1,5 +1,5 @@
 // @ts-nocheck
-import { data, methods } from "../data/DB.ts"
+import { data, methods } from "../data/dataBase.js"
 export default
   `
 <div v-for="i in lists">

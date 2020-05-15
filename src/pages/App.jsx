@@ -1,5 +1,5 @@
 import Version from "./Version.jsx"
-import { data, methods } from "../data/DB.ts"
+import { data, methods } from "../data/dataBase.js"
 import tree from "./Tree.jsx"
 
 export default
