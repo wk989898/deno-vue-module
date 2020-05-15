@@ -1,4 +1,5 @@
-import {data,methods}from "./data/DB.ts"
+import {data,methods}from "../data/DB.ts"
+
 export default 
 `
 <div>
