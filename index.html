@@ -32,9 +32,8 @@
     }
     ws.addEventListener("message", (e) => {
       if (e.data === 'fileUpdate') {
-        // ws.send('close')
-        // location.replace(location.href);
-        console.log('fileUpdate');
+        ws.send('close')
+        location.replace(location.href);
       }
     })
   </script>

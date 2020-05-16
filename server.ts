@@ -26,16 +26,27 @@ new Application()
       bufWriter,
     });
     for await (const e of ws) {
+      /**
+       * issue solved
+       * https://stackoverflow.com/questions/61833945/question-about-websocket-and-loction-replace/61834079?noredirect=1#comment109369427_61834079
+       */
       if (e === 'close') {
         ob.remove("fileUpdate")
         continue
       }
       ob.on("fileUpdate", () => {
-        ws.send("fileUpdate")
+        if (!ws.isClosed)
+          ws.send("fileUpdate")
       })
     }
   })
   .start({ port: 8080 })
 
 console.log(`start at http://localhost:8080`);
+
+try {
+  Deno.run({
+    cmd: ["explorer", "http://localhost:8080"]
+  })
+} catch{ }
 

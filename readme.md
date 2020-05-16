@@ -7,7 +7,7 @@ a Demo use Deno build Vue project
 ## Feature
 
 No pack  
-Just write and refresh browser
+Just write ~~and refresh browser~~
 
 ## Contents
 
@@ -23,8 +23,8 @@ Just write and refresh browser
 
 ## Run
 
-```js
-deno run --allow-net --allow-net server.ts
+``` js
+deno run --allow-net --allow-read server.ts
 or
 deno run -A server.ts
 ```
