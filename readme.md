@@ -1,23 +1,30 @@
-## Deno - Vue - ESModule 
-### Intro
-a Demo use Deno build Vue project
-### Feature
-No pack  
-Just write and refresh browser  
+# Deno - Vue - ESModule
 
-### Contents
+## Intro
+
+a Demo use Deno build Vue project
+
+## Feature
+
+No pack  
+Just write and refresh browser
+
+## Contents
+
 - dataBase.js `Storage`
   - data
   - method
-  - lifestyle  
+  - lifestyle
 - pages `page`
   - export default template
   - data
   - method
   - lifestyle
-### Run
-``` js
+
+## Run
+
+```js
 deno run --allow-net --allow-net server.ts
-or 
+or
 deno run -A server.ts
 ```

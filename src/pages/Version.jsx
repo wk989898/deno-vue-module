@@ -6,7 +6,7 @@ export default
 {{version}}
 </div>
 `
-data.version = "v1.0"
+data.version = "v2.0"
 
 const life = {
   mounted() {

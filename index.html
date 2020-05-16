@@ -8,48 +8,14 @@
 </head>
 
 <body>
-  <div id="app"></div>
-  <script type="module">
-    import template from "http://localhost:3000/pages/App.jsx"
-    import * as DB from "http://localhost:3000/data/dataBase.js"
-    import Vue from "https://cdn.jsdelivr.net/npm/vue@2.6.11/dist/vue.esm.browser.js"
-    const {
-      data,
-      methods,
-      lifestyle:{
-      beforeCreate,
-      created,
-      beforeMount,
-      mounted,
-      beforeUpdate,
-      updated,
-      beforeDestory,
-      destoryed,
-      activated,
-      deactivated,
-      errorCaptured
-      }}=DB
-    new Vue({
-    template,
-    data,
-    methods,
-    beforeCreate,
-    created,
-    beforeMount,
-    mounted,
-    beforeUpdate,
-    updated,
-    beforeDestory,
-    destoryed,
-    activated,
-    deactivated,
-    errorCaptured
-    }).$mount('#app')
-  </script>
+  <div id="main">
+    <div id="app"></div>
+  </div>
+  <script src="./module.js" type="module" id="_module"></script>
   <script nomodule>
     alert('module is not support')
   </script>
-  <script>
+  <!-- <script>
     if ('serviceWorker' in window.navigator) {
       window.navigator.serviceWorker.register("sw.js").then(registration => {
         registration.addEventListener("updatefound", () => {
@@ -57,6 +23,20 @@
         })
       })
     }
+  </script> -->
+  <script>
+    var ws = new WebSocket("ws://127.0.0.1:8080/ws")
+    ws.onopen = function () {
+      ws.send('ws open')
+      console.log('ws open');
+    }
+    ws.addEventListener("message", (e) => {
+      if (e.data === 'fileUpdate') {
+        // ws.send('close')
+        // location.replace(location.href);
+        console.log('fileUpdate');
+      }
+    })
   </script>
 </body>
 
