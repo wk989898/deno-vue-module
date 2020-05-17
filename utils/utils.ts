@@ -52,3 +52,6 @@ export const watchFile = async () => {
     }, 500);
   }
 }
+
+export const decoder=new TextDecoder()
+export const encoder=new TextEncoder()

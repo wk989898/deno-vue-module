@@ -1,18 +1,21 @@
-import { data, lifestyle } from "../data/dataBase.js"
+// @ts-nocheck
+import vue_compiler from "http://localhost:8080/compiler.js"
 
-export default
+const template=
+    `
+  <div>
+  {{version}}
+  </div>
   `
-<div>
-{{version}}
-</div>
-`
-data.version = "v2.0"
-
-const life = {
+export default {
+  template,
+  data() {
+    return {
+      version: "v2.0"
+    }
+  },
   mounted() {
     // @ts-ignore
     console.log(this.version);
   }
 }
-
-Object.assign(lifestyle,life)

@@ -9,18 +9,6 @@ a Demo use Deno build Vue project
 No pack  
 Just write ~~and refresh browser~~
 
-## Contents
-
-- dataBase.js `Storage`
-  - data
-  - method
-  - lifestyle
-- pages `page`
-  - export default template
-  - data
-  - method
-  - lifestyle
-
 ## Run
 
 ``` js

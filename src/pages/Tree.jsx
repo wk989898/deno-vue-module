@@ -1,17 +1,28 @@
 // @ts-nocheck
-import { data, methods } from "../data/dataBase.js"
-export default
-  `
-<div v-for="i in lists">
-<p @click="btnclick(i)">{{i}}</p>
-</div>
-`
-data.lists = ['tree1', 'tree2', 'tree3']
+import Version from "./Version.jsx";
 
-const Method={
-  btnclick(i){
-    console.log(i)
+export default {
+  template:
+    `
+    <div>
+    <div v-for="i in tree">
+    <p @click="btnclick(i)">{{i}}</p>
+    </div>
+    <div><Version/></div>
+    </div>
+`,
+  data() {
+    return {
+      tree: ['tree1', 'tree2', 'tree3']
+    }
+  },
+  components: {
+    Version
+  },
+
+  methods: {
+    btnclick(i) {
+      console.log(i)
+    }
   }
 }
-
-Object.assign(methods,Method)
