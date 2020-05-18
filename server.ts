@@ -3,6 +3,8 @@ import { HandlerFunc, MiddlewareFunc } from "https://deno.land/x/abc/types.ts";
 import { Context } from "https://deno.land/x/abc/context.ts";
 import { acceptWebSocket } from "https://deno.land/std@0.51.0/ws/mod.ts";
 import { watchFile, ob, encoder, decoder } from "./utils/utils.ts"
+// import {  } from "./utils/compiler.js";
+// import {  } from "./utils/vue.js";
 // import { Module } from "https://deno.land/std/node/module.ts";
 
 const app = new Application()
@@ -11,6 +13,7 @@ app
     (h: HandlerFunc) => (c: Context) => {
       watchFile()
       c.response.headers.set("Access-Control-Allow-Origin", "*")
+      c.response.headers.set("Content-Type", "Application/javascript")
       return h(c)
     })
   .start({ port: 3000 })
@@ -18,7 +21,8 @@ app
 new Application()
   .file("/", "index.html")
   .file("/main.js", "main.js")
-  .file("/compiler.js","./utils/vue-template-compiler.js")
+  .file("/compiler.js","./utils/compiler.js")
+  .file("/Vue.js","./utils/vue.js")
   // .file("sw.js", "ServiceWorker.js")
   .get('/ws', async (c: Context) => {
     const { conn, headers, r: bufReader, w: bufWriter } = c.request;

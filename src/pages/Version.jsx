@@ -1,17 +1,17 @@
 // @ts-nocheck
-import vue_compiler from "http://localhost:8080/compiler.js"
-
 const template=
     `
   <div>
   {{version}}
   </div>
   `
+
 export default {
   template,
+  // render:h=>h(Vue),
   data() {
     return {
-      version: "v2.0"
+      version: "Vue 3.0"
     }
   },
   mounted() {

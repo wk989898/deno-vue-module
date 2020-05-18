@@ -3,15 +3,8 @@
  * it is neccessary
  */
 import Tree from "./pages/Tree.jsx"
-import vue_compiler from "http://localhost:8080/compiler.js";
 
-window.vue_compiler=vue_compiler
-/**
- * support render
- */
-const {compile,parseComponent}=vue_compiler
-
-const template=
+const template =
   `
 <div>
 {{name}}
@@ -20,8 +13,12 @@ const template=
 `
 export default {
   template,
-  data: {
-    name: "hello Deno ~~",
+  // render:h=>h(
+  // ),
+  data() {
+    return {
+      name: "hello Deno ~~",
+    }
   },
   components: {
     Tree
