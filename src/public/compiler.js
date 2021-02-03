@@ -1,6 +1,9 @@
 // @ts-nocheck
-import postcss from './postcss.js';
+// import { createRequire } from "https://deno.land/std/node/module.ts";
 
+// const require = createRequire(import.meta.url);
+import postcss from './postcss/postcss.js.js.js';
+// const postcss =require("./postcss/postcss.js")
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors

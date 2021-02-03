@@ -25,10 +25,10 @@
     }
   </script> -->
   <script>
-    var ws = new WebSocket("ws://127.0.0.1:8080/ws")
+    var ws = new WebSocket(`ws://${location.host}/ws`)
     ws.onopen = function () {
       ws.send('ws open')
-      console.log('ws open');
+      console.log('when file update , page will reopen');
     }
     ws.addEventListener("message", (e) => {
       if (e.data === 'fileUpdate') {

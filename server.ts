@@ -1,30 +1,20 @@
-import { Application } from "https://deno.land/x/abc/mod.ts";
-import { HandlerFunc, MiddlewareFunc } from "https://deno.land/x/abc/types.ts";
-import { Context } from "https://deno.land/x/abc/context.ts";
-import { acceptWebSocket } from "https://deno.land/std@0.51.0/ws/mod.ts";
-import { watchFile, ob, encoder, decoder } from "./utils/utils.ts"
-// import {  } from "./utils/compiler.js";
-// import {  } from "./utils/vue.js";
-// import { Module } from "https://deno.land/std/node/module.ts";
+import { Application } from "https://deno.land/x/abc@v1/mod.ts";
+import { acceptWebSocket } from "https://deno.land/std@0.63.0/ws/mod.ts";
+import { watchFile, ob, encoder, decoder } from "./utils.ts"
 
 const app = new Application()
 app
-  .static('', "src",
-    (h: HandlerFunc) => (c: Context) => {
+  .static('/', "./src",
+    h => c => {
       watchFile()
       c.response.headers.set("Access-Control-Allow-Origin", "*")
       c.response.headers.set("Content-Type", "Application/javascript")
       return h(c)
-    })
-  .start({ port: 3000 })
-
-new Application()
-  .file("/", "index.html")
-  .file("/main.js", "main.js")
-  .file("/compiler.js","./utils/compiler.js")
-  .file("/Vue.js","./utils/vue.js")
+    }
+  )
+  .file('/', './index.html')
   // .file("sw.js", "ServiceWorker.js")
-  .get('/ws', async (c: Context) => {
+  .get('/ws', async c => {
     const { conn, headers, r: bufReader, w: bufWriter } = c.request;
     const ws = await acceptWebSocket({
       conn,
@@ -47,13 +37,12 @@ new Application()
       })
     }
   })
-  .start({ port: 8080 })
+  .start({ port: 3000 })
 
-console.log(`start at http://localhost:8080`);
 
 try {
   Deno.run({
-    cmd: ["explorer", "http://localhost:8080"]
+    cmd: ["explorer", "http://localhost:3000/"]
   })
-} catch{ }
+} catch { }
 

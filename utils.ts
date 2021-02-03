@@ -22,24 +22,10 @@ class Ob {
 }
 export const ob = new Ob()
 
+/** watchFile */
 const path = "./src"
 const watcher = Deno.watchFs(path);
 var status = false, timer: number
-// function throttle(delay: number): Function {
-//   let timer: number | undefined;
-//   let status = false
-//   return async function () {
-//     if (status) return;
-//     else {
-//       status = true
-
-//       timer && clearTimeout(timer)
-//       timer = setTimeout(() => {
-//         status = false
-//       }, delay);
-//     }
-//   }
-// }
 
 export const watchFile = async () => {
   if (status) return;
